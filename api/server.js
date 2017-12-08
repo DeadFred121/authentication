@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
 const { initialize, requireJWT, verifyAdmin } = require('./middleware/auth')
@@ -10,6 +11,7 @@ const { initialize, requireJWT, verifyAdmin } = require('./middleware/auth')
 const app = express()
 
 // Plugins
+app.use(cors())
 app.use(bodyParser.json()) // Allows me to have JSON uploads (POST/PUT)
 app.use(initialize)
 
