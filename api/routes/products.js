@@ -13,4 +13,16 @@ router.get('/products', requireJWT, (req, res) => {
   })
 })
 
+router.post('/products/new', requireJWT, (req, res) => {
+  Product.create({
+    brandName: req.body.brandName,
+    name: req.body.name
+  }).then((product) => {
+    res.send(product)
+  })
+    .catch((error) => {
+      res.status(500).send({ error: error.message })
+  })
+})
+
 module.exports = router

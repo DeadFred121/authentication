@@ -10,6 +10,7 @@ const should = chai.should()
 let token
 
 describe('Test routes', () => {
+
   it('should return 404 for invalid URL', (done) => {
     request(app)
       .get('/nothing-to-see-here')
